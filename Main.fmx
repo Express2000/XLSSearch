@@ -1,0 +1,112 @@
+object Form2: TForm2
+  Left = 0
+  Top = 0
+  Caption = #1055#1086#1080#1089#1082
+  ClientHeight = 657
+  ClientWidth = 1147
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  OnCreate = FormCreate
+  OnDeactivate = FormDeactivate
+  OnKeyDown = FormKeyDown
+  DesignerMasterStyle = 0
+  object Edit1: TEdit
+    Touch.InteractiveGestures = [LongTap, DoubleTap]
+    Anchors = [akLeft, akTop, akRight]
+    TabOrder = 8
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 913.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TextPrompt = #1058#1077#1082#1089#1090' '#1076#1083#1103' '#1087#1086#1080#1089#1082#1072
+    OnTyping = Edit1Typing
+    OnClick = Edit1Click
+    OnMouseWheel = Edit1MouseWheel
+    object SpinEditButton1: TSpinEditButton
+      AutoTranslate = False
+      CanFocus = False
+      Cursor = crArrow
+      Size.Width = 20.000000000000000000
+      Size.Height = 29.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      OnDownClick = SpinEditButton1DownClick
+      OnUpClick = SpinEditButton1UpClick
+    end
+  end
+  object StringGrid1: TStringGrid
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    CanFocus = True
+    ClipChildren = True
+    Position.X = 8.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 1132.000000000000000000
+    Size.Height = 585.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Options = [Editing, ColumnResize, ColLines, RowLines, RowSelect, Tabs, Header, HeaderClick, AutoDisplacement]
+    Viewport.Width = 1112.000000000000000000
+    Viewport.Height = 560.000000000000000000
+    object StringColumn1: TStringColumn
+      Size.Width = 65.000000000000000000
+    end
+    object StringColumn2: TStringColumn
+      Size.Width = 503.000000000000000000
+    end
+    object StringColumn3: TStringColumn
+      Size.Width = 55.000000000000000000
+    end
+    object StringColumn4: TStringColumn
+      Size.Width = 482.000000000000000000
+    end
+  end
+  object CheckBox1: TCheckBox
+    Anchors = [akTop, akRight]
+    Hint = 
+      #1055#1088#1080' '#1076#1077#1072#1082#1090#1080#1074#1072#1094#1080#1080' '#1086#1082#1085#1072' '#1087#1088#1080#1083#1086#1078#1077#1085#1080#1103' '#1087#1077#1088#1074#1072#1103' '#1089#1080#1084#1074#1086#1083' '#1090#1077#1082#1089#1090' '#1074' '#1073#1091#1092#1077#1088#1077' '#1086#1073#1084 +
+      #1077#1085#1072'  '#1089#1090#1072#1085#1086#1074#1080#1090#1089#1103' '#1079#1072#1075#1083#1072#1074#1085#1099#1084
+    IsChecked = True
+    Position.X = 928.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 13
+    Text = #1050#1086#1087#1080#1088#1086#1074#1072#1090#1100' '#1089' '#1079#1072#1075#1083#1072#1074#1085#1086#1081' '#1073#1091#1082#1074#1086#1081
+  end
+  object CheckBox2: TCheckBox
+    Anchors = [akTop, akRight]
+    Hint = #1048#1089#1082#1086#1084#1099#1081' '#1090#1077#1082#1089#1090' '#1076#1086#1083#1078#1077#1085' '#1087#1086#1083#1085#1086#1089#1090#1100#1102' '#1089#1086#1074#1087#1072#1076#1072#1090#1100' '#1089' '#1089#1086#1076#1077#1088#1078#1080#1084#1099#1084' '#1103#1095#1077#1077#1082
+    Position.X = 928.000000000000000000
+    Position.Y = 24.000000000000000000
+    Size.Width = 209.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 12
+    Text = #1058#1086#1095#1085#1086#1077' '#1089#1086#1074#1087#1072#1076#1077#1085#1080#1077' '#1090#1077#1082#1089#1090#1072' '#1103#1095#1077#1081#1082#1080
+  end
+  object Label1: TLabel
+    Anchors = [akLeft, akRight, akBottom]
+    Position.X = 8.000000000000000000
+    Position.Y = 637.000000000000000000
+    Size.Width = 1129.000000000000000000
+    Size.Height = 17.000000000000000000
+    Size.PlatformDefault = False
+    Text = 'F2/F3 - '#1085#1072#1079#1072#1076'/'#1074#1087#1077#1088#1077#1076' '#1087#1086' '#1088#1077#1079#1091#1083#1100#1090#1072#1090#1072#1084' '#1087#1086#1080#1089#1082#1072
+    TabOrder = 15
+  end
+  object OpenDialog1: TOpenDialog
+    Left = 592
+    Top = 24
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = Timer1Timer
+    Left = 240
+    Top = 8
+  end
+end
