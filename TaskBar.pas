@@ -30,8 +30,8 @@ type
 
   TFMXTaskBar = class(TPersistent)
   private
-    fTaskBarList : ITaskBarList3;
     fTaskBarState : integer;
+    fTaskBarList : ITaskBarList3;
     fTaskBarProgress : integer;
     fAlertState : Boolean;
     procedure setTaskBarState(newState:integer);

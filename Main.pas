@@ -59,7 +59,7 @@ var
     CurrentSearchResult, SearchResultQty: integer;
     SelectText: boolean;
     TaskBar: TFMXTaskBar;
-
+    TBState: integer;
 implementation
 
 {$R *.fmx}
@@ -75,8 +75,11 @@ procedure TForm2.FormActivate(Sender: TObject);
 var Svc: IFMXClipboardService;
     s: string;
 begin
-    if TaskBar.TaskBarState=4
-    then TaskBar.TaskBarState:=0;
+    if TBState=4
+    then begin
+        TaskBar.TaskBarState:=0;
+        TBState:=0;
+    end;
 
     try
         if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, Svc)
@@ -157,9 +160,9 @@ end;
           try
               if (j mod 1000 = 0)
               then begin
-                  Form2.Caption:='Загрузка '+FormatFloat('0.00%',(j/r*100));
-                  Form2.ProgressBar1.Value :=(j/r*100);
-                  Form2.TaskBar.TaskBarProgress :=round(j/r*100);
+                  Caption:='Загрузка '+FormatFloat('0.00%',(j/r*100));
+                  ProgressBar1.Value :=(j/r*100);
+                  TaskBar.TaskBarProgress :=round(j/r*100);
                   Application.ProcessMessages;
               end;
 
@@ -171,11 +174,13 @@ end;
               //ShowMessage(inttostr(j)+' '+e.Message);
           end;
       end;
-      Form2.Caption:='Загрузка 100%';
-      Form2.ProgressBar1.Value :=0;
+      Caption:='Загрузка 100%';
+      ProgressBar1.Value:=0;
       if not Form2.Active
       then begin
-          TaskBar.TaskBarState:=4;
+          TaskBar.TaskBarProgress:=100;
+          TBState:=4;
+          TaskBar.TaskBarState:=TBState;
       end;
       ExlApp.Quit;
       ExlApp := Unassigned;
