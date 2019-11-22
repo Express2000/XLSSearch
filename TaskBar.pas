@@ -1,5 +1,19 @@
 ﻿unit TaskBar;
 
+//Установка значения
+//TaskBar.TaskBarProgress :=50;
+
+//TaskBarState:=2;
+
+//NoProgress    = 0
+//Indeterminate = 1 переливающаяся полоса
+//Normal        = 2 Зеленый
+//Error         = 3 Красный
+//Paused        = 4 Желтый
+
+//TaskBar.AlertState:=True //Красный полностью
+
+
 interface
 uses
   {$IFDEF MSWINDOWS}

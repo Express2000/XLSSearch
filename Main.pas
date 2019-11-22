@@ -75,8 +75,8 @@ procedure TForm2.FormActivate(Sender: TObject);
 var Svc: IFMXClipboardService;
     s: string;
 begin
-    if TaskBar.AlertState=True
-    then TaskBar.AlertState:=false;
+    if TaskBar.TaskBarState=4
+    then TaskBar.TaskBarState:=0;
 
     try
         if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, Svc)
@@ -172,10 +172,10 @@ end;
           end;
       end;
       Form2.Caption:='Загрузка 100%';
-      Form2.ProgressBar1.Value :=100;
+      Form2.ProgressBar1.Value :=0;
       if not Form2.Active
       then begin
-          Form2.TaskBar.AlertState:=True;
+          TaskBar.TaskBarState:=4;
       end;
       ExlApp.Quit;
       ExlApp := Unassigned;
