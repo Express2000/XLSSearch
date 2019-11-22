@@ -8,7 +8,7 @@ uses
   FMX.Controls.Presentation, System.Rtti, FMX.Grid.Style, FMX.Grid,
   FMX.ScrollBox,
   System.Win.ComObj, FMX.Platform,
-  StrUtils, FMX.StdCtrls;
+  StrUtils, FMX.StdCtrls, TaskBar;
 
 type
   TForm2 = class(TForm)
@@ -24,6 +24,7 @@ type
     CheckBox1: TCheckBox;
     CheckBox2: TCheckBox;
     Label1: TLabel;
+    ProgressBar1: TProgressBar;
 
     procedure Edit1Typing(Sender: TObject);
     procedure Edit1Click(Sender: TObject);
@@ -48,7 +49,8 @@ type
   private
     { Private declarations }
   public
-    { Public declarations }
+
+    TaskBar: TFMXTaskBar;
   end;
 
 var
@@ -56,12 +58,15 @@ var
     SearchRow, SearchCol: integer;
     CurrentSearchResult, SearchResultQty: integer;
     SelectText: boolean;
+    TaskBar: TFMXTaskBar;
+
 implementation
 
 {$R *.fmx}
 
 procedure TForm2.FormCreate(Sender: TObject);
 begin
+    TaskBar:=TFMXTaskBar.Create;
     Timer1.Enabled:=True;
     SelectText:=True;
 end;
@@ -70,6 +75,9 @@ procedure TForm2.FormActivate(Sender: TObject);
 var Svc: IFMXClipboardService;
     s: string;
 begin
+    if TaskBar.AlertState=True
+    then TaskBar.AlertState:=false;
+
     try
         if TPlatformServices.Current.SupportsPlatformService(IFMXClipboardService, Svc)
         then s:=Svc.GetClipboard.AsString;
@@ -150,6 +158,8 @@ end;
               if (j mod 1000 = 0)
               then begin
                   Form2.Caption:='Загрузка '+FormatFloat('0.00%',(j/r*100));
+                  Form2.ProgressBar1.Value :=(j/r*100);
+                  Form2.TaskBar.TaskBarProgress :=round(j/r*100);
                   Application.ProcessMessages;
               end;
 
@@ -162,6 +172,11 @@ end;
           end;
       end;
       Form2.Caption:='Загрузка 100%';
+      Form2.ProgressBar1.Value :=100;
+      if not Form2.Active
+      then begin
+          Form2.TaskBar.AlertState:=True;
+      end;
       ExlApp.Quit;
       ExlApp := Unassigned;
       Sheet := Unassigned;

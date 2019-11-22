@@ -3,7 +3,8 @@ program BL3XLS;
 uses
   System.StartUpCopy,
   FMX.Forms,
-  Main in 'Main.pas' {Form2};
+  Main in 'Main.pas' {Form2},
+  TaskBar in 'TaskBar.pas';
 
 {$R *.res}
 

@@ -90,9 +90,9 @@ object Form2: TForm2
   end
   object Label1: TLabel
     Anchors = [akLeft, akRight, akBottom]
-    Position.X = 8.000000000000000000
+    Position.X = 216.000000000000000000
     Position.Y = 637.000000000000000000
-    Size.Width = 1129.000000000000000000
+    Size.Width = 921.000000000000000000
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'F2/F3 - '#1085#1072#1079#1072#1076'/'#1074#1087#1077#1088#1077#1076' '#1087#1086' '#1088#1077#1079#1091#1083#1100#1090#1072#1090#1072#1084' '#1087#1086#1080#1089#1082#1072
@@ -108,5 +108,13 @@ object Form2: TForm2
     OnTimer = Timer1Timer
     Left = 240
     Top = 8
+  end
+  object ProgressBar1: TProgressBar
+    Orientation = Horizontal
+    Position.X = 8.000000000000000000
+    Position.Y = 635.000000000000000000
+    Size.Width = 201.000000000000000000
+    Size.Height = 20.000000000000000000
+    Size.PlatformDefault = False
   end
 end
